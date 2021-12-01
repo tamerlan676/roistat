@@ -4,7 +4,7 @@
           <button class="call" @click="callPopup">Добавить пользователя</button>
     </header>
     <Table :table="table" />
-    <Popup :table="table" />
+    <Popup :table="table" v-if="isActive" class="isActive"/>
   </div>
 </template>
 
@@ -13,10 +13,13 @@ import Table from './components/Table.vue'
 import Popup from './components/Popup.vue'
 
 export default {
+
   name: 'App',
   data(){
     return{
-      table:[],
+      table:[
+      ],
+      isActive: false
     }
   },
   mounted() {
@@ -24,8 +27,12 @@ export default {
   },
   methods: {
     callPopup(){
-      let pop = document.querySelector('.popup');
-      pop.classList.toggle('active')
+      if(this.isActive == false){
+        this.isActive = true
+      }
+      else{
+        this.isActive = false
+      }
     },
   },
   components: {
@@ -53,7 +60,7 @@ body{
   justify-content: flex-end;
   margin-bottom: 20px;
 }
-.active{
+.isActive{
   opacity: 1;
   right: 20px;
 }

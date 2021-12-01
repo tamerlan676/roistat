@@ -3,14 +3,14 @@
         <header>
             <h3>Добавить пользователя</h3>
         </header>
-        <label>Введите имя</label>
+        <label for="">Введите имя</label>
         <input type="text" v-model="name">
-        <label>Введите номер телефона</label>
-        <input type="number" v-model="phone">
-        <label>Укажите начальника</label>
-        <select v-model="selected">
+        <label for="">Введите номер телефона</label>
+        <input type="text" v-model="phone">
+        <label for="">Укажите начальника</label>
+        <select v-model="selected" name="" id="">
             <option></option>
-            <option v-for="(item, key) in table" :key="key" :value="item.value">{{ item.name }}</option>
+            <option  v-for="(item, key) in table" :key="key" >{{ item.name }}</option>
         </select>
         <button @click="addPerson">Добавить</button>
     </div>
@@ -23,7 +23,6 @@ export default ({
         return{
                 name: '',
                 phone: '',
-                selected: '',
         }
     },
     props: ['table'],
@@ -35,10 +34,10 @@ export default ({
                 phone: this.phone,
                 selected: this.selected
             });
-            }
             this.name = '';
             this.phone = '';
             localStorage.setItem("table", JSON.stringify(this.table));
+            }
         }
     }
 })
