@@ -32,7 +32,6 @@ export default ({
             this.table.push({
                 name: this.name,
                 phone: this.phone,
-                selected: this.selected
             });
             this.name = '';
             this.phone = '';
